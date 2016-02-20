@@ -9,7 +9,6 @@
         <div class="Site">
             <div class="Header Container">
                 <h1 class="Header-title u-marginAn"> ConcertFriends </h1>
-                <p class="Header-description">Find someone to go with you to an awesome event</p>
             </div>
             @section('content')
             @show

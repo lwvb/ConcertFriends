@@ -26,9 +26,13 @@
         <div class="Event-selectDate">
             <button id="eventDate" class="Button Button-date" type="submit">
                 <svg class="Icon Icon--calender"><use xlink:href="#Icon--calender"></use></svg>
-                Find a date
             </button>
-        </div>        
+        </div>
+        <div class="Event-selectCity">
+            <button id="eventCity" class="Button Button-city" type="submit">
+                <svg class="Icon Icon--marker"><use xlink:href="#Icon--marker"></use></svg>
+            </button>
+        </div>
         <div class="Event-add">
             <button id="eventAdd" class="Button Button-add" type="submit">
                 + Add event

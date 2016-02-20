@@ -2,12 +2,23 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    .Search-form {
+        .Search-field {
+            color: white;
+        }
+        background-color: $color-blue;
+        ::-webkit-input-placeholder {
+            color: $color-white;
+        }
+        :-moz-placeholder {
+            color: $color-white;
+        }
+        ::-moz-placeholder {
+            color: $color-white;
+        }
+        :-ms-input-placeholder {
+            color: $color-white;
+        }
+    }
 }
 
-.Event-selectDate {
-    flex: 1 auto;
-}
-
-.Event-selectCity {
-    flex: 1 auto;
-}

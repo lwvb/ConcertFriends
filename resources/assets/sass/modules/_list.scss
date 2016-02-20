@@ -9,6 +9,36 @@
 }
 
 .List-item {
-    border-top: 1px solid $color-gray;
-    padding: 1em 0;
+    // background: $color-gray;
+    // padding: 1.5em;
+}
+
+
+.Event-link {
+    display: block;
+    background: $color-gray;
+    padding: .5em 1.5em;
+    margin-bottom: 1em;
+    &:hover {
+        background-color: $color-blue;
+        color: $color-white;
+        text-decoration: none;
+        .Icon {
+            fill: $color-white;
+        }
+    }
+}
+
+.Event-name {
+    margin-bottom: 0;
+}
+
+.Event-date {
+    display: inline-block;
+    margin-right: 1em;
+}
+
+.Event-city {
+    display: inline-block;
+    margin-top: 0;
 }
