@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ConcertController@map');
+Route::get('/list', 'ConcertController@listall');
+Route::get('/concert/{concertId}', 'ConcertController@show')->where(['concertId' => '[\w]+']);
+
 
 /*
 |--------------------------------------------------------------------------

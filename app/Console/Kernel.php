@@ -13,7 +13,10 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        // Commands\Inspire::class,
+        \App\Console\Commands\Setup::class,
+        \App\Console\Commands\SetupElastic::class,
+        \App\Console\Commands\SetupDummydata::class,
+        \App\Console\Commands\SetupTest::class
     ];
 
     /**
