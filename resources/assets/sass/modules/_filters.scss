@@ -1,0 +1,13 @@
+.Filters {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.Event-selectDate {
+    flex: 1 auto;
+}
+
+.Event-selectCity {
+    flex: 1 auto;
+}

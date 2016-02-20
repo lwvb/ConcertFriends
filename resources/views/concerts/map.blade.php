@@ -23,7 +23,7 @@
                 </button>
             </form>
         </div>
-        <div class="Event-date">
+        <div class="Event-selectDate">
             <button id="eventDate" class="Button Button-date" type="submit">
                 <svg class="Icon Icon--calender"><use xlink:href="#Icon--calender"></use></svg>
                 Find a date
