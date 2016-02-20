@@ -35,7 +35,7 @@ class Concerts
             return $this->elasticClient->update($params);
         } else {
             $params['body'] = $concert->getDocument();
-            return $this->elasticClient->index($document);
+            return $this->elasticClient->index($params);
         }
     }
 
