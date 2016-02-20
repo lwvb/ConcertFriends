@@ -27,4 +27,35 @@ class ConcertController extends Controller
     public function show($concertId) {
     	return view('concerts.show',['concert' => $this->concerts->get($concertId)]);
     }
+
+    public function edit($concertId) {
+		return view('concerts.edit',['concert' => $this->concerts->get($concertId)]);
+    }
+
+    	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @param  Requests\CreatePageRequest $request
+	 * @return Response
+	 */
+	public function store(Requests\EditConcertRequest $request) {
+		$concert = $request->all();
+
+		if (isset($newPage['image'])) {
+			$image = Input::file('image');
+			$fileName = $image->getClientOriginalName();
+			$path = public_path('images/theme/');
+			$image->move($path, $fileName);
+			$newPage['image'] = $fileName;
+		}
+		Page::create($newPage);
+
+		return redirect('editor');
+	}
+
+
+    public function autoComplete($term) {
+        // TODO
+        return json_encode([]);
+    }
 }

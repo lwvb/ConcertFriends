@@ -62,7 +62,7 @@ class SetupDummydata extends Command
         $concerts->add([
             'name' => 'Bruce Springsteen & The E Street Band',
             'start_date' => Carbon::create(2016, 06, 14, 20, 0, 0, 'Europe/Amsterdam')->toIso8601String(),
-            'adres' => 'Malieveld',
+            'address' => 'Malieveld',
             'city' => 'Den Haag',
             'country' => 'The Netherlands',
             'location' => ['lat' => 52.0857695, 'lon' => 4.318614],
@@ -74,7 +74,7 @@ class SetupDummydata extends Command
         $concerts->add([
             'name' => 'K3',
             'start_date' => Carbon::create(2016, 02, 20, 17, 0, 0, 'Europe/Amsterdam')->toIso8601String(),
-            'adres' => 'Lardinoisstraat 8',
+            'address' => 'Lardinoisstraat 8',
             'city' => 'Eindhoven',
             'country' => 'The Netherlands',
             'location' => ['lat' => 51.4432334, 'lon' => 5.4741154],
@@ -86,7 +86,7 @@ class SetupDummydata extends Command
         $concerts->add([
             'name' => 'GRATIS LUNCHCONCERT',
             'start_date' => Carbon::create(2016, 02, 26, 12, 30, 0, 'Europe/Amsterdam')->toIso8601String(),
-            'adres' => 'Concertgebouwplein 10',
+            'address' => 'Concertgebouwplein 10',
             'city' => 'Amsterdam',
             'country' => 'The Netherlands',
             'location' => ['lat' => 52.356319, 'lon' => 4.8769572],

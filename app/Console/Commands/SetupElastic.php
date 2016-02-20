@@ -39,7 +39,7 @@ class SetupElastic extends Command
                     'properties' => [
                         'name' => ['type' => 'string'],
                         'start_date' => ['type' => 'date', 'format' => 'date_time_no_millis'],
-                        'adres' => ['type' => 'string'],
+                        'address' => ['type' => 'string'],
                         'city' => ['type' => 'string'],
                         'country' => ['type' => 'string'],
                         'location' => ['type' => 'geo_point'],

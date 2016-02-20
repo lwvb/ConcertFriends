@@ -14,6 +14,10 @@
 Route::get('/', 'ConcertController@map');
 Route::get('/list', 'ConcertController@listall');
 Route::get('/concert/{concertId}', 'ConcertController@show')->where(['concertId' => '[\w]+']);
+Route::get('/concert/{concertId}/edit', 'ConcertController@edit')->where(['concertId' => '[\w]+']);
+Route::get('/concert/new', 'ConcertController@edit');
+Route::post('concert/store', ['before' => 'csrf', 'use' => 'ConcertController@store']);
+
 
 
 /*

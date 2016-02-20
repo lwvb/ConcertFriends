@@ -31,6 +31,15 @@ class Concerts
         ]);
     }
 
+    public function update($id, $body) {
+        return $this->elasticClient->update([
+            'index' => ElasticNames::INDEX_NAME,
+            'type' => ElasticNames::TYPE_CONCERT,
+            'id' => $id,
+            'body' => $body
+        ]);
+    }
+
     public function all($offset = 0, $limit = 20) {
     	return $this->elasticClient->search([
     		'index' => ElasticNames::INDEX_NAME,
@@ -50,4 +59,5 @@ class Concerts
             'id' => $id
         ]);
     }
+
 }
