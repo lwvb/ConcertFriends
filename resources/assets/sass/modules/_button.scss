@@ -1,0 +1,19 @@
+.Button {
+    cursor: pointer;
+    border: 0;
+    background-color: $color-blue;
+    color: $color-white;
+    padding: 1em 1.5em;
+    &:focus {
+        outline: none;
+        border: 0;
+    }
+    &:hover,
+    &:active {
+        background-color: $color-blue-dark;
+    }
+}
+
+.Button .Icon {
+    fill: $color-white;
+}

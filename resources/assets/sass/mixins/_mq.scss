@@ -1,0 +1,27 @@
+@mixin MQ($canvas) {
+  @if $canvas == XS {
+    @media all and (min-width: $breakpoint-xs) {
+      @content;
+    }
+  } @else if $canvas == S {
+    @media all and (min-width: $breakpoint-s) {
+      @content;
+    }
+  } @else if $canvas == M {
+    @media all and (min-width: $breakpoint-m) {
+      @content;
+    }
+  } @else if $canvas == XM {
+    @media all and (min-width: $breakpoint-xm) {
+      @content;
+    }
+  } @else if $canvas == L {
+    @media all and (min-width: $breakpoint-l) {
+      @content;
+    }
+  } @else if $canvas == XL {
+    @media all and (min-width: $breakpoint-xl) {
+      @content;
+    }
+  }
+}

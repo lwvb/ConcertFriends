@@ -1,0 +1,50 @@
+.Event-map {
+    background-color: #CCC;
+    width: 100%;
+    height: 100vh;
+}
+
+
+.Event-content {
+    position: absolute;
+    bottom: 3em;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.Event-search {
+    flex: 1 auto;
+    width:  80%;
+    margin-right: 1em;
+}
+
+.Event-add {
+    flex: 1 auto;
+}
+
+.Search-form {
+    position: relative;
+    background-color: $color-white;
+    padding: .8em 1em;
+    display: inline-block;
+    height: 50px;
+    border-radius: 3px;
+    width: 100%;
+}
+
+.Search-field {
+    border: 0;
+    width: 100%;
+    background-color: transparent;
+    padding: .2em .5em;
+}
+
+.Search-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 50px;
+    padding: 0.2em 1.5em;
+}

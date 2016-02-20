@@ -1,0 +1,12 @@
+.Container {
+    position: relative;
+    padding: 2em;
+    margin: 0 auto;
+    @include MQ(M) {
+        padding: 2em 4em;
+    }
+    @include MQ(XM){
+        padding: 2em 6em;
+        width: 1024px;
+    }
+}

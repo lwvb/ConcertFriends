@@ -1,0 +1,13 @@
+.Header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: $color-blue;
+    color: $color-white;
+    text-align: center;
+    padding-bottom: 1em;
+}
+
+.Header-description {
+    margin-top: .5em;
+}
