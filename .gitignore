@@ -16,3 +16,7 @@ storage/
 public/storage
 Homestead.yaml
 Homestead.json
+
+# No compiled files in git
+public/js
+public/css
