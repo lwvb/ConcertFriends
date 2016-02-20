@@ -35,15 +35,13 @@
                     </button>
                 </div> 
                 <div class="Event-selectSwitch">
-                    <button id="eventSwitch" class="Button Button-switch" type="submit">
-                        <svg class="Icon Icon--map"><use xlink:href="#Icon--map"></use></svg>
-                    </button>
+                    <a href="/">
+                        <button id="eventSwitch" class="Button Button-switch" type="submit">
+                            <svg class="Icon Icon--map"><use xlink:href="#Icon--map"></use></svg>
+                        </button>
+                    </a>
                 </div>
-                <div class="Event-add">
-                    <button id="eventAdd" class="Button Button-add" type="submit">
-                        + Add event
-                    </button>
-                </div>
+               
             </div>
             
             <ul class="List List--bare">

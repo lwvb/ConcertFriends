@@ -8,11 +8,11 @@
     <body>
         <div class="Site">
             <div class="Header Container">
-                <h1 class="Header-title u-marginAn"> ConcertFriends </h1>
+                <h1 class="Header-title u-marginAn"> <a href="/">ConcertFriends </a></h1>
                 <div class="Nav">
-                    <a class="Nav-item"></a>
-                    <a class="Nav-item">Add event</a>
-                    <a class="Nav-item">Login</a>
+                    <a class="Nav-item"><svg class="Icon Icon--add"><use xlink:href="#Icon--add"></use></svg>Add event</a>
+                    <a class="Nav-item"><svg class="Icon Icon--login"><use xlink:href="#Icon--login"></use></svg>Login</a>
+                </div>
                 </div>
             </div>
             @section('content')

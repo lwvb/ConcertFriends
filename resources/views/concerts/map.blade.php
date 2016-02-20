@@ -34,15 +34,13 @@
             </button>
         </div>
         <div class="Event-selectSwitch">
-            <button id="eventSwitch" class="Button Button-switch" type="submit">
-                <svg class="Icon Icon--list"><use xlink:href="#Icon--list"></use></svg>
-            </button>
+            <a href="/list">
+                <button id="eventSwitch" class="Button Button-switch" type="submit">
+                    <svg class="Icon Icon--list"><use xlink:href="#Icon--list"></use></svg>
+                </button>
+            </a>
         </div>
-        <div class="Event-add">
-            <button id="eventAdd" class="Button Button-add" type="submit">
-                + Add event
-            </button>
-        </div>
+        
     </div>
 @stop
 

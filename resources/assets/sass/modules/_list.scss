@@ -40,5 +40,8 @@
 
 .Event-city {
     display: inline-block;
-    margin-top: 0;
+    margin-top: .5em;
+    @include MQ(S) {
+        margin-top: 0;
+    }
 }
