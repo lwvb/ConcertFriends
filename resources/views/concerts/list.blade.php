@@ -34,6 +34,11 @@
                         <svg class="Icon Icon--marker"><use xlink:href="#Icon--marker"></use></svg>
                     </button>
                 </div> 
+                <div class="Event-selectSwitch">
+                    <button id="eventSwitch" class="Button Button-switch" type="submit">
+                        <svg class="Icon Icon--map"><use xlink:href="#Icon--map"></use></svg>
+                    </button>
+                </div>
                 <div class="Event-add">
                     <button id="eventAdd" class="Button Button-add" type="submit">
                         + Add event

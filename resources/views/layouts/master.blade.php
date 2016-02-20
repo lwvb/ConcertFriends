@@ -9,6 +9,11 @@
         <div class="Site">
             <div class="Header Container">
                 <h1 class="Header-title u-marginAn"> ConcertFriends </h1>
+                <div class="Nav">
+                    <a class="Nav-item"></a>
+                    <a class="Nav-item">Add event</a>
+                    <a class="Nav-item">Login</a>
+                </div>
             </div>
             @section('content')
             @show
