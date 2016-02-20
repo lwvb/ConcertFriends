@@ -4,6 +4,7 @@ namespace App;
 
 use Elasticsearch\ClientBuilder;
 use Elasticsearch\Client;
+use App\Concert;
 
 class Concerts
 {
@@ -23,25 +24,23 @@ class Concerts
         $this->elasticClient = ClientBuilder::create()->build();
     }
 
-    public function add($body) {
-		return $this->elasticClient->index([
+    public function save($concert) {
+        $params = [
             'index' => ElasticNames::INDEX_NAME,
             'type' => ElasticNames::TYPE_CONCERT,
-            'body' => $body
-        ]);
-    }
-
-    public function update($id, $body) {
-        return $this->elasticClient->update([
-            'index' => ElasticNames::INDEX_NAME,
-            'type' => ElasticNames::TYPE_CONCERT,
-            'id' => $id,
-            'body' => $body
-        ]);
+        ];
+        if($concert->hasId()) {
+            $params['id'] = $concert->getId();
+            $params['body']['doc'] = $concert->getDocument();
+            return $this->elasticClient->update($params);
+        } else {
+            $params['body'] = $concert->getDocument();
+            return $this->elasticClient->index($document);
+        }
     }
 
     public function all($offset = 0, $limit = 20) {
-    	return $this->elasticClient->search([
+    	$results = $this->elasticClient->search([
     		'index' => ElasticNames::INDEX_NAME,
     		'type' => ElasticNames::TYPE_CONCERT,
     		'body' => [
@@ -50,14 +49,20 @@ class Concerts
     			'query' => ['match_all' => []]
     		]
     	]);
+        $concerts = [];
+        foreach ($results['hits']['hits'] as $concertData) {
+            $concerts[] = new Concert($concertData);
+        }
+        return ['total'=> $results['hits']['total'], 'concerts' => $concerts];
     }
 
     public function get($id) {
-        return $this->elasticClient->get([
+        $result = $this->elasticClient->get([
             'index' => ElasticNames::INDEX_NAME,
             'type' => ElasticNames::TYPE_CONCERT,
             'id' => $id
         ]);
+        return new Concert($result);
     }
 
 }

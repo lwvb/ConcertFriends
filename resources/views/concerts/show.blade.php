@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        {{ $concert['_source']['name'] }}
+        {{ $concert->getName() }}
     </div>
 @stop
 

@@ -39,7 +39,7 @@ class SetupTest extends Command
     public function handle()
     {
         $concerts = new Concerts();
-        if(count($concerts->all()['hits']['hits']) >= 3) {
+        if($concerts->all()['total'] >= 3) {
             $this->info('Index has dummy data');
         } else {
             $this->error('Unable to get dummy data from elasticsearch index');

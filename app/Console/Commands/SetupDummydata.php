@@ -8,6 +8,7 @@ use Elasticsearch\ClientBuilder;
 use Elasticsearch\Client;
 use App\ElasticNames;
 use App\Concerts;
+use App\Concert;
 use Carbon\Carbon;
 
 class SetupDummydata extends Command
@@ -58,8 +59,7 @@ class SetupDummydata extends Command
         ])['_id'];
         $this->info('Created a new system user with id '.$systemUserId);
         $concerts = new Concerts();
-
-        $concerts->add([
+        $concerts->save(new Concert([
             'name' => 'Bruce Springsteen & The E Street Band',
             'start_date' => Carbon::create(2016, 06, 14, 20, 0, 0, 'Europe/Amsterdam')->toIso8601String(),
             'address' => 'Malieveld',
@@ -68,10 +68,9 @@ class SetupDummydata extends Command
             'location' => ['lat' => 52.0857695, 'lon' => 4.318614],
             'description' => 'Een echte verhalenverteller met een heerlijke rauwe stem en een ongekende energie. The Boss komt terug! Wat de setlist van de show in Den Haag zal zijn blijft nog even een verrassing, maar dat het massaal meeschreeuwen wordt dat weten we wel zeker!',
             'url' => 'http://www.mojo.nl/concerten/bruce-springsteen/',
-            'owner' => $systemUserId]);
-        $this->info('added concert 1');
+            'owner' => $systemUserId]));
 
-        $concerts->add([
+        $concerts->save(new Concert([
             'name' => 'K3',
             'start_date' => Carbon::create(2016, 02, 20, 17, 0, 0, 'Europe/Amsterdam')->toIso8601String(),
             'address' => 'Lardinoisstraat 8',
@@ -80,10 +79,9 @@ class SetupDummydata extends Command
             'location' => ['lat' => 51.4432334, 'lon' => 5.4741154],
             'description' => 'Afscheidsconcert Karen, Kristel en Josje',
             'url' => 'http://tickets.studio100.nl/show/k3-k3-show-de-afscheidstour-van-karen-kristel-en-josje-nederland',
-            'owner' => $systemUserId]);
-        $this->info('added concert 2');
+            'owner' => $systemUserId]));
 
-        $concerts->add([
+        $concerts->save(new Concert([
             'name' => 'GRATIS LUNCHCONCERT',
             'start_date' => Carbon::create(2016, 02, 26, 12, 30, 0, 'Europe/Amsterdam')->toIso8601String(),
             'address' => 'Concertgebouwplein 10',
@@ -99,8 +97,7 @@ PROGRAMMA
 
 Dvořák - Derde strijkkwintet in Es, op. 97, B 180',
             'url' => 'http://www.concertgebouw.nl/concerten/gratis-lunchconcert/26-02-2016',
-            'owner' => $systemUserId]);
-        $this->info('added concert 3');
+            'owner' => $systemUserId]));
 
         $this->elasticClient->indices()->flush(['index' => ElasticNames::INDEX_NAME]);
     }
