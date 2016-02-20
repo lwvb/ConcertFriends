@@ -4,7 +4,6 @@
         <title>ConcertFriends</title>
         <link href="/css/app.css" rel="stylesheet" type="text/css">
         <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
-        <script src="/js/map.js" ></script>
     </head>
     <body>
         <div class="Site">
@@ -13,14 +12,13 @@
                 <p class="Header-description">Find someone to go with you to an awesome event</p>
             </div>
             @section('content')
-
             @show
         </div>
-
+        
         @include('icons')
-
+                
         @section('scripts')
         @show
-
+        
     </body>
 </html>
