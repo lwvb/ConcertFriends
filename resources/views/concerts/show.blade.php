@@ -26,6 +26,9 @@
             <button class="Button Button--full">Join and meet up</button>                        
         </div>
     </div>
+    @section ('footer')
+        @include ('footer')
+    @show
 @stop
 
 @section('scripts')
