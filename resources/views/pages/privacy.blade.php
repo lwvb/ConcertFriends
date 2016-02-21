@@ -20,14 +20,10 @@
             browser type, browser version, the pages of our Site that you visit, the time and date of your visit,
             the time spent on those pages and other statistics.<br>
             In addition, we may use third party services such as Google Analytics that collect, monitor and
-            analyze this …<br>
-            The Log Data section is for businesses that use analytics or tracking services in websites or
-            apps, like Google Analytics. For the full disclosure section, create your own Privacy Policy.
+            analyze this.<br>
             <h3>Communications</h3>
             We may use your Personal Information to contact you with newsletters, marketing or promotional
-            materials and other information that ...<br>
-            The Communications section is for businesses that may contact users via email (email
-            newsletters) or other methods. For the full disclosure section, create your own Privacy Policy.
+            materials and other information.<br>
             <h3>Cookies</h3>
             Cookies are files with small amount of data, which may include an anonymous unique identifier.
             Cookies are sent to your browser from a web site and stored on your computer's hard drive.
@@ -40,7 +36,7 @@
             use commercially acceptable means to protect your Personal Information, we cannot guarantee its
             absolute security.
             <h3>Changes To This Privacy Policy</h3>
-            This Privacy Policy is effective as of (add date) and will remain in effect except with respect to any
+            This Privacy Policy is effective as of 22 februari 2016 and will remain in effect except with respect to any
             changes in its provisions in the future, which will be in effect immediately after being posted on this
             page.<br>
             We reserve the right to update or change our Privacy Policy at any time and you should check this

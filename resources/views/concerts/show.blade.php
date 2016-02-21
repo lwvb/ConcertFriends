@@ -32,9 +32,11 @@
                                 </div>
                             </a>
                         @endforeach
+                    @else
+                        <p id="event-users-placeholder">Be the first to join</p>
                     @endif
                 @else
-                    <p>See who's going when you login</p>
+                    <p>Login to see who else is going and want to be your new concert friend.</p>
                 @endif
                 </div>
             </div>
@@ -65,6 +67,7 @@ $('#event-subscribe').click(function() {
         success: function(data) {
             if(data) {
                 $('#event-subscribe').text('You are going, Yeah!');
+                $('#event-users-placeholder').hide();
                 $('#event-users').append('<div class="Event-person"><img src="https://graph.facebook.com/v2.5/{{ Auth::user()->getFacebookUid() }}/picture?type=normal" alt="{{ Auth::user()->getName() }}"></div>');
             } else {
                 $('#event-subscribe').text('Oops, something did go wrong.');

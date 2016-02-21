@@ -18,7 +18,7 @@
                             <li class="Nav-item">
                                 <a href="/concert/new">
                                     <svg class="Icon Icon--add"><use xlink:href="#Icon--add"></use></svg>
-                                    <span class="Item">Add event</span>
+                                    <span class="Item">Add Concert</span>
                                 </a>
                             </li>
                             <li class="Nav-item">

@@ -10,7 +10,7 @@
     </div>
     <div class="Footer-copywrite">
         <div class="Container">
-            <span class="Copywrite">Team A © 2016 Koding Hackaton All rights reserved</span>
+            <span class="Copywrite">Team A © 2016 All rights reserved - created during the <a href="https://www.koding.com/Hackathon">Hack.summit() Virtual Hackaton </span>
         </div>
     </div>
 </footer>

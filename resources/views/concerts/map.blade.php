@@ -7,7 +7,7 @@
         <div class="Event-search">
             <form name="searchForm" id="searchForm" class="Search-form" action="" method="get">
                 <input
-                    placeholder="Find your event"
+                    placeholder="Find your next concert"
                     type="search"
                     type="text"
                     name="q"

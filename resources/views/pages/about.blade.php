@@ -4,13 +4,11 @@
     <div class="Site-content">
         <div class="Container">
             <h2>About</h2>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus enim, imperdiet at posuere et, tincidunt ornare quam. Etiam dapibus et erat nec ultricies. Duis efficitur vel arcu ac tempus. Phasellus dapibus nisl et tempor pulvinar. Duis a porttitor ipsum. Fusce quis urna at massa ultrices pellentesque. Aenean elementum odio massa, in tincidunt purus pellentesque sit amet. Quisque efficitur dignissim mi id rutrum. Sed sapien risus, maximus ut nulla ac, sollicitudin semper velit.
+            Do you enjoy going to concerts? We do, only friends are not always available and going alone is not as fun. We created this website to find new friends for these occasions.
             <h3>Team A</h3>
-            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi in hendrerit tellus. Etiam ac diam convallis, sagittis nisl in, congue enim. Sed ut sodales risus. Donec eu nisl imperdiet, consequat libero sit amet, tristique dui. In id nibh elit. Aliquam aliquam ligula lorem, vel porta tortor semper vitae. Phasellus nulla erat, tempor ac orci ac, luctus vehicula felis. Vivamus eleifend justo ut augue pharetra, non congue magna aliquet. Sed congue nunc lobortis blandit pulvinar. Etiam tristique elit non tincidunt venenatis. Aenean non posuere justo. Ut iaculis eros non nibh convallis, nec vestibulum lacus ultricies.
+            This website is created by 'Team A' which consist of two members. The good looking Petra who was in charge of making this site looking good. The practical Leendert made sure everyting worked as we intended it should work.
             <h3>Hackaton</h3>
-            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi in hendrerit tellus. Etiam ac diam convallis, sagittis nisl in, congue enim. Sed ut sodales risus. Donec eu nisl imperdiet, consequat libero sit amet, tristique dui. In id nibh elit. Aliquam aliquam ligula lorem, vel porta tortor semper vitae. Phasellus nulla erat, tempor ac orci ac, luctus vehicula felis. Vivamus eleifend justo ut augue pharetra, non congue magna aliquet. Sed congue nunc lobortis blandit pulvinar. Etiam tristique elit non tincidunt venenatis. Aenean non posuere justo. Ut iaculis eros non nibh convallis, nec vestibulum lacus ultricies.
-            <h3>Founders</h3>
-            Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi in hendrerit tellus. Etiam ac diam convallis, sagittis nisl in, congue enim. Sed ut sodales risus. Donec eu nisl imperdiet, consequat libero sit amet, tristique dui. In id nibh elit. Aliquam aliquam ligula lorem, vel porta tortor semper vitae. Phasellus nulla erat, tempor ac orci ac, luctus vehicula felis. Vivamus eleifend justo ut augue pharetra, non congue magna aliquet. Sed congue nunc lobortis blandit pulvinar. Etiam tristique elit non tincidunt venenatis. Aenean non posuere justo. Ut iaculis eros non nibh convallis, nec vestibulum lacus ultricies.
+            We made this site for the <a href="https://www.koding.com/Hackathon">2016 hack.summit() hackaton</a>.
         </div>
     </div>
     @section ('footer')
