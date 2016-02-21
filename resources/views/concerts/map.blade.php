@@ -24,6 +24,7 @@
                 </button>
             </form>
         </div>
+        <!-- TODO: make it work like filters
         <div class="Event-selectDate">
             <button id="eventDate" class="Button Button-date" type="submit">
                 <svg class="Icon Icon--calender"><use xlink:href="#Icon--calender"></use></svg>
@@ -33,7 +34,7 @@
             <button id="eventCity" class="Button Button-city" type="submit">
                 <svg class="Icon Icon--marker"><use xlink:href="#Icon--marker"></use></svg>
             </button>
-        </div>
+        </div>-->
         <div class="Event-selectSwitch">
             <a href="/list">
                 <button id="eventSwitch" class="Button Button-switch" type="submit">

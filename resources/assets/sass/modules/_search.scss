@@ -16,7 +16,7 @@
 .Event-search {
     margin-bottom: .5em;
     width: 100%;
-    @include MQ(M) {    
+    @include MQ(XS) {    
         flex: 1 auto;
         width: 65%;        
     }
