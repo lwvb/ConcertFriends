@@ -33,3 +33,23 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/concert/{concertId}/edit', 'ConcertController@edit')->where(['concertId' => '[\w]+']);
 
 });
+
+Route::get('/privacy', function(){
+    return view('pages/privacy');
+});
+
+Route::get('/help', function(){
+    return view('pages/help');
+});
+
+Route::get('/about', function(){
+    return view('pages/about');
+});
+
+Route::get('/terms', function(){
+    return view('pages/terms');
+});
+
+Route::get('/contact', function(){
+    return view('pages/contact');
+});

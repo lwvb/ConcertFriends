@@ -1,11 +1,11 @@
 <footer class="Footer">
     <div class="Footer-content">
         <div class="Container">
-            <a href="#" class="Footer-link">About</a>
-            <a href="#" class="Footer-link">Privacy</a>
-            <a href="#" class="Footer-link">Terms and conditions</a>
-            <a href="#" class="Footer-link">Help</a>
-            <a href="#" class="Footer-link">Contact</a>
+            <a href="/about" class="Footer-link">About</a>
+            <a href="/privacy" class="Footer-link">Privacy</a>
+            <a href="/terms" class="Footer-link">Terms of use</a>
+            <a href="/help" class="Footer-link">Help</a>
+            <a href="/contact" class="Footer-link">Contact</a>
         </div>
     </div>
     <div class="Footer-copywrite">
