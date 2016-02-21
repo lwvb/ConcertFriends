@@ -59,12 +59,8 @@ class ConcertController extends Controller
 	 */
 	public function store(Requests\EditConcertRequest $request) {
 		$concert = new Concert(array_merge($request->all(),['startDate' => Carbon::now()->toIso8601String()]));
-		$this->concerts->save($concert);
-		return redirect('/list');
+		$result = $this->concerts->save($concert);
+		return redirect('/concert/'.$result['_id']);
 	}
 
-
-    public function autoComplete($term) {
-        return json_encode([]);
-    }
 }

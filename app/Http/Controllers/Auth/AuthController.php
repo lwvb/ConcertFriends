@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\User;
 use App\Users;
 use Validator;
@@ -53,7 +54,7 @@ class AuthController extends Controller
     }
 
 
-    public function getSocialAuthCallback($provider=null)
+    public function getSocialAuthCallback($provider=null,Request $request)
     {
         if(!config("services.$provider")) abort('404');
         if($userData = $this->socialite->with($provider)->user()){
@@ -61,6 +62,9 @@ class AuthController extends Controller
             $user = new User($userData);
             $user = $users->save($user);
             \Auth::login($user, false);
+            if($request->session()->get('next_page')) {
+                return redirect($request->session()->pull('next_page'));
+            }
             return redirect('/');
         } else {
             return abort('404');

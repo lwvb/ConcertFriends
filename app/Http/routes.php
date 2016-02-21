@@ -29,6 +29,7 @@ Route::group(['middleware' => ['web']], function () {
 	    'uses' => 'Auth\AuthController@getSocialAuth',
 	    'as'   => 'auth.getSocialAuth'
 	]);
+	Route::get('/login', function(){ return redirect('/login/facebook');});
 	Route::get('/login/callback/{provider?}',[
 	    'uses' => 'Auth\AuthController@getSocialAuthCallback',
 	    'as'   => 'auth.getSocialAuthCallback'
@@ -40,14 +41,14 @@ Route::group(['middleware' => ['web']], function () {
 
 	Route::get('/', 'ConcertController@map');
 	Route::get('/list', 'ConcertController@listall');
-	Route::get('/concert/new', 'ConcertController@edit');
-	Route::post('concert/store', ['before' => 'csrf', 'uses' => 'ConcertController@store']);
+	Route::get('/concert/new', ['middleware' => 'auth', 'uses' => 'ConcertController@edit']);
+	Route::post('concert/store', ['middleware' => 'auth', 'before' => 'csrf', 'uses' => 'ConcertController@store']);
 	Route::get('/concert/{concertId}', 'ConcertController@show')->where(['concertId' => '[\w]+']);
-	Route::get('/concert/{concertId}/edit', 'ConcertController@edit')->where(['concertId' => '[\w]+']);
+	Route::get('/concert/{concertId}/edit', ['middleware' => 'auth', 'uses' => 'ConcertController@edit'])->where(['concertId' => '[\w]+']);
 
 
 	//Route::get('/user/{facebookUid}', 'UserController@show')->where(['facebookUid' => '[0-9]+']);
-	Route::get('/api/subscribe/{concertId}', 'ApiController@subscribe')->where(['concertId' => '[\w]+']);
+	Route::get('/api/subscribe/{concertId}', ['middleware' => 'auth', 'uses' => 'ApiController@subscribe'])->where(['concertId' => '[\w]+']);
 
 
 	Route::get('/privacy', function(){ return view('pages/privacy'); });
