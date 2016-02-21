@@ -59,6 +59,10 @@ class ConcertController extends Controller
 	 */
 	public function store(Requests\EditConcertRequest $request) {
 		$concert = new Concert(array_merge($request->all(),['startDate' => Carbon::now()->toIso8601String()]));
+        $curl     = new \Ivory\HttpAdapter\CurlHttpAdapter();
+        $geocoder = new \Geocoder\Provider\GoogleMaps($curl);
+        $address = $geocoder->geocode($concert->getAddressString())->first();
+        $concert->setLocation($address->getLatitude(),$address->getLongitude());
 		$result = $this->concerts->save($concert);
 		return redirect('/concert/'.$result['_id']);
 	}

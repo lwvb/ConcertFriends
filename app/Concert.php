@@ -86,6 +86,10 @@ class Concert
         return $this->startDate->formatLocalized('%d %B %Y, %H:%M');
     }
 
+    public function getAddressString() {
+        return $this->address.', '.$this->city.', '.$this->country;
+    }
+
     public function getDate() {
         return $this->startDate->toDateString();
     }
