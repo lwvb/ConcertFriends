@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="Event-map" id="map"></div>
-    <div class="Event-content Container">
+    <div class="Event-content">
+        <div class="Container">
         <div class="Event-search">
             <form name="searchForm" id="searchForm" class="Search-form" action="" method="get">
                 <input
@@ -40,7 +41,7 @@
                 </button>
             </a>
         </div>
-        
+        </div>
     </div>
 @stop
 

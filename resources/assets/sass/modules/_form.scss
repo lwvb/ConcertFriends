@@ -17,9 +17,6 @@ select {
     }
 }
 
-.Event-form {
-    
-}
 .Form-group {
     margin-bottom: .5em;
     display: flex;
@@ -28,8 +25,11 @@ select {
     label {
         flex: 1 auto;
         display: inline-block;
-        width: 24%;
         vertical-align: top;
+        width: 100%;
+        @include MQ(S) {
+            width: 24%;
+        }
     }
     input,
     textarea {

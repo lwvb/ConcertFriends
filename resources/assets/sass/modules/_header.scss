@@ -1,9 +1,11 @@
 .Header {
+    position: relative;
     background: $color-blue;
+    z-index: 1;
     .Container {
         width: 100%;
         color: $color-white;
-        padding-bottom: 1em;
+        padding-bottom: 1.5em;
         padding-top: 2em;
         // height: 6em;
         display: flex;
@@ -14,6 +16,10 @@
 
 .Header-title {
     flex: 1 auto;
+    font-size: 1.5em;
+    @include MQ(S) {
+        font-size: 2em;
+    }
     a {
         color: $color-white;
         &:hover {
@@ -23,24 +29,33 @@
 }
 
 .Nav {
-    flex: 1 auto;
     text-align: right;
-    margin-top: 1.5em;
-    @include MQ(M) {
-        margin-top: -.5em;
-    }
+    flex: 1 auto;
+}
+
+.Nav-items {
+    margin: 0;
+    padding: 0;
 }
 
 .Nav-item {
-    background: $color-blue-dark;
-    color: $color-white;
-    padding: .8em;
     cursor: pointer;
     display: inline-block;
     margin-bottom: .5em;
-    &:hover {
-        text-decoration: none;
-        background: $color-blue-darker;
+    @include MQ(S) {
+        margin-right: 1em;
+    }
+    a {
+        color: $color-white;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    .Item {
+        display: none;
+        @include MQ(M) {
+            display: inline-block;
+        }
     }
 }
 

@@ -1,11 +1,16 @@
 
 .Event-content {
     position: absolute;
-    bottom: 3em;
+    bottom: -1em;
+    @include MQ(M) {
+        bottom: 3em;
+    }
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    .Container {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
 }
 
 .Event-search {

@@ -1,4 +1,17 @@
 .Footer {
     background: $color-blue;
     color: $color-white;
+    .Container {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+}
+
+.Footer-content {
+    flex: 1 auto;
+    width: 100%;
+    @include MQ(S) {
+        width: 33.3%;
+    }
 }

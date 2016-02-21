@@ -1,7 +1,9 @@
 .Event-map {
     background-color: #CCC;
     width: 100%;
-    height: calc(100vh - 6em);
+    height: 100vh;
+    position: absolute;
+    top: 0;
 }
 
 
@@ -95,11 +97,11 @@
 .leaflet-top,
 .leaflet-bottom {
 	position: absolute;
-	z-index: 1000;
+	z-index: 0;
 	pointer-events: none;
 	}
 .leaflet-top {
-	top: 0;
+	top: 8em;
 	}
 .leaflet-right {
 	right: 0;
@@ -385,7 +387,7 @@
 	}
 .leaflet-touch .leaflet-control-layers,
 .leaflet-touch .leaflet-bar {
-	border: 2px solid rgba(0,0,0,0.2);
+// 	border: 2px solid rgba(0,0,0,0.2);
 	background-clip: padding-box;
 	}
 
