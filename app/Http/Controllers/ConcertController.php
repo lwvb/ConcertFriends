@@ -17,9 +17,15 @@ class ConcertController extends Controller
 	public function __construct() {
 		$this->concerts = new Concerts();
 	}
-    public function listall() {
-        $allConcerts = $this->concerts->all();
-        return view('concerts.list',['concerts' => $allConcerts['concerts']]);
+
+    public function listall(Request $request) {
+    	$search = preg_replace('/[^\w\x80-\xFF\- :]/', '', $request->input('q'));
+    	if(strlen($search)) {
+    		$result = $this->concerts->search($search);
+    	} else {
+    		$result = $this->concerts->all();
+    	}
+        return view('concerts.list',['concerts' => $result['concerts'], 'search' => $search]);
     }
 
     public function map() {

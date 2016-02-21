@@ -39,16 +39,77 @@ class Concerts
         }
     }
 
-    public function all($offset = 0, $limit = 20) {
-    	$results = $this->elasticClient->search([
-    		'index' => ElasticNames::INDEX_NAME,
-    		'type' => ElasticNames::TYPE_CONCERT,
-    		'body' => [
-    			'from' => $offset,
-    			'size' => $limit,
-    			'query' => ['match_all' => []]
-    		]
-    	]);
+    public function all($offset = 0, $limit = 200) {
+        $results = $this->elasticClient->search([
+            'index' => ElasticNames::INDEX_NAME,
+            'type' => ElasticNames::TYPE_CONCERT,
+            'body' => [
+                'from' => $offset,
+                'size' => $limit,
+                'query' => ['match_all' => []]
+            ]
+        ]);
+        $concerts = [];
+        foreach ($results['hits']['hits'] as $concertData) {
+            $concerts[] = new Concert($concertData);
+        }
+        return ['total'=> $results['hits']['total'], 'concerts' => $concerts];
+    }
+
+    public function search($search, $offset = 0, $limit = 20) {
+        $results = $this->elasticClient->search([
+            'index' => ElasticNames::INDEX_NAME,
+            'type' => ElasticNames::TYPE_CONCERT,
+            'body' => [
+                'from' => $offset,
+                'size' => $limit,
+                'query' => [
+                    'bool' => [
+                        'minimum_should_match' => 1,
+                        'should' => [
+                            ['match' => [
+                                'name' => [
+                                    'query' => $search,
+                                    'boost' => 1.8
+                                ],
+                            ]],
+                            ['match' => [
+                                'city' => [
+                                    'query' => $search,
+                                    'boost' => 1.6
+                                ],
+                            ]],
+                            ['match' => [
+                                'description' => [
+                                    'query' => $search,
+                                    'boost' => 1.2
+                                ]
+                            ]],
+                            ['fuzzy' => [
+                                'name' => [
+                                    'value' => $search,
+                                    'fuzziness' => 'AUTO',
+                                    'boost' => 1.1
+                                ],
+                            ]],
+                            ['fuzzy' => [
+                                'city' => [
+                                    'value' => $search,
+                                    'fuzziness' => 'AUTO',
+                                ]
+                            ]],
+                            ['fuzzy' => [
+                                'description' => [
+                                    'value' => $search,
+                                    'fuzziness' => 'AUTO',
+                                ],
+                            ]],
+                        ]
+                    ]
+                ],
+
+            ]
+        ]);
         $concerts = [];
         foreach ($results['hits']['hits'] as $concertData) {
             $concerts[] = new Concert($concertData);
