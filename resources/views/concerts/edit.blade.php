@@ -5,6 +5,16 @@
         <div class="Filters Container"></div>
     	<div class="Filters Container"></div>
     	<div class="Container">
+		@if (count($errors) > 0)
+		    <div class="alert alert-danger">
+		        <ul>
+		            @foreach ($errors->all() as $error)
+		                <li>{{ $error }}</li>
+		            @endforeach
+		        </ul>
+		    </div>
+		@endif
+
     	{!! Form::model($concert, ['url' => '/concert/store']) !!}
     		<div class="form-group">
 				{!! Form::label('Name:') !!}
