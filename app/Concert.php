@@ -114,10 +114,19 @@ class Concert
             'city' => $this->city,
             'country' => $this->country,
             'location' => $this->location,
-            'description' => $this->description,
-            'owner' => ($this->owner) ? $this->owner : \Auth::user()->getFacebookUid()];
-        if($this->url) { $data['url'] = $this->url; }
-        if(is_array($this->users)) { $data['users'] = $this->users; }
+            'description' => $this->description];
+        // optional elements
+        if($this->owner) {
+            $data['owner'] = $this->owner;
+        } else if(\Auth::user()) {
+            $data['owner'] = \Auth::user()->getFacebookUid();
+        }
+        if($this->url) {
+            $data['url'] = $this->url;
+        }
+        if(is_array($this->users)) {
+            $data['users'] = $this->users;
+        }
         return $data;
     }
 
