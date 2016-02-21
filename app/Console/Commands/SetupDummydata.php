@@ -74,8 +74,7 @@ class SetupDummydata extends Command
             'country' => 'The Netherlands',
             'location' => ['lat' => 52.0857695, 'lon' => 4.318614],
             'description' => 'Een echte verhalenverteller met een heerlijke rauwe stem en een ongekende energie. The Boss komt terug! Wat de setlist van de show in Den Haag zal zijn blijft nog even een verrassing, maar dat het massaal meeschreeuwen wordt dat weten we wel zeker!',
-            'url' => 'http://www.mojo.nl/concerten/bruce-springsteen/',
-            'owner' => $systemUserId]));
+            'url' => 'http://www.mojo.nl/concerten/bruce-springsteen/']));
 
         $concerts->save(new Concert([
             'name' => 'K3',
@@ -85,8 +84,7 @@ class SetupDummydata extends Command
             'country' => 'The Netherlands',
             'location' => ['lat' => 51.4432334, 'lon' => 5.4741154],
             'description' => 'Afscheidsconcert Karen, Kristel en Josje',
-            'url' => 'http://tickets.studio100.nl/show/k3-k3-show-de-afscheidstour-van-karen-kristel-en-josje-nederland',
-            'owner' => $systemUserId]));
+            'url' => 'http://tickets.studio100.nl/show/k3-k3-show-de-afscheidstour-van-karen-kristel-en-josje-nederland']));
 
         $concerts->save(new Concert([
             'name' => 'GRATIS LUNCHCONCERT',
@@ -103,8 +101,7 @@ Takehiro Konoe - altviool
 PROGRAMMA
 
 Dvořák - Derde strijkkwintet in Es, op. 97, B 180',
-            'url' => 'http://www.concertgebouw.nl/concerten/gratis-lunchconcert/26-02-2016',
-            'owner' => $systemUserId]));
+            'url' => 'http://www.concertgebouw.nl/concerten/gratis-lunchconcert/26-02-2016']));
 
         $this->elasticClient->indices()->flush(['index' => ElasticNames::INDEX_NAME]);
     }

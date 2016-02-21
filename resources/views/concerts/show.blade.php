@@ -4,6 +4,11 @@
     <div class="Site-content">
         <div class="Container">
             <h1 class="Event-name">{{ $concert->getName() }}</h1><br>
+            @if ($concert->hasOwner() && $concert->getOwner() === Auth::user()->getFacebookUid())
+                <a href="/concert/{{ $concert->getId() }}/edit">
+                    <button class="Button">Edit</button>
+                </a>
+            @endif
             <date class="Event-date">
                 <svg class="Icon Icon--calender"><use xlink:href="#Icon--calender"></use></svg>
                 {{ $concert->getDateString() }}

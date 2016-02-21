@@ -67,7 +67,11 @@ class Concert
     }
 
     public function hasId() {
-        return ($this->id);
+        return (strlen($this->id));
+    }
+
+    public function hasOwner() {
+        return (strlen($this->owner));
     }
 
     public function getId()          { return $this->id; }
@@ -106,9 +110,9 @@ class Concert
             'city' => $this->city,
             'country' => $this->country,
             'location' => $this->location,
-            'description' => $this->description];
+            'description' => $this->description,
+            'owner' => ($this->owner) ? $this->owner : \Auth::user()->getFacebookUid()];
         if($this->url) { $data['url'] = $this->url; }
-        if($this->owner) { $data['owner'] = $this->owner; }
         if(is_array($this->users)) { $data['users'] = $this->users; }
         return $data;
     }

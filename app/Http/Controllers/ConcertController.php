@@ -43,11 +43,15 @@ class ConcertController extends Controller
     }
 
     public function edit($concertId = NULL) {
-    	$concertData = NULL;
+    	$concert = NULL;
 		if($concertId) {
-			$concertData = $this->concerts->get($concertId);
+			$concert = $this->concerts->get($concertId);
+            if($concert->hasOwner() && $concert->getOwner() !== \Auth::user()->getFacebookUid()){
+                return redirect('/concert/'.$concertId);
+            }
+
 		}
-		return view('concerts.edit',['concert' => $concertData]);
+		return view('concerts.edit',['concert' => $concert]);
 
     }
 
