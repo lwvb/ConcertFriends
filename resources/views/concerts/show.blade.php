@@ -17,13 +17,27 @@
             </p>
             <div class="Event-audience">
                 <h3>Who's going</h3>
-                <div class="Event-person"></div>
-                <div class="Event-person"></div>
-                <div class="Event-person"></div>
-                <div class="Event-person"></div>
-                <div class="Event-person"></div>
+                <div id="event-users">
+                @if (is_array($concert->getUsers()))
+                    @foreach ($concert->getUsers() as $user)
+                        <a href="https://facebook.com/{{ $user['fb_uid'] }}">
+                            <div class="Event-person">
+                                <img src="https://graph.facebook.com/v2.5/{{ $user['fb_uid'] }}/picture?type=normal" alt="{{ $user['name'] }}" title="{{ $user['name'] }}">
+                            </div>
+                        </a>
+                    @endforeach
+                @endif
+                </div>
             </div>
-            <button class="Button Button--full">Join and meet up</button>
+            @if (Auth::check())
+                @if ($concert->hasUser(Auth::user()->getFacebookUid()))
+                    <button class="Button Button--full disabled">You are going, Yeah!</button>
+                @else
+                    <button class="Button Button--full" id="event-subscribe">Join and meet up</button>
+                @endif
+            @else
+                <a href="/login/facebook"><button class="Button Button--full">Login to join</button></a>
+            @endif
         </div>
     </div>
     @section ('footer')
@@ -32,5 +46,24 @@
 @stop
 
 @section('scripts')
+@if (Auth::check())
+<script>
+$('#event-subscribe').click(function() {
+    $('#event-subscribe').prop("disabled",true);
+    $('#event-subscribe').text('...');
 
+    $.ajax('/api/subscribe/{{ $concert->getId() }}', {
+        success: function(data) {
+            if(data) {
+                $('#event-subscribe').text('You are going, Yeah!');
+                $('#event-users').append('<div class="Event-person"><img src="https://graph.facebook.com/v2.5/{{ Auth::user()->getFacebookUid() }}/picture?type=normal" alt="{{ Auth::user()->getName() }}"></div>');
+            } else {
+                $('#event-subscribe').text('Oops, something did go wrong.');
+            }
+        }
+    });
+
+});
+</script>
+@endif
 @stop

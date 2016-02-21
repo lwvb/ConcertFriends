@@ -46,7 +46,8 @@ Route::group(['middleware' => ['web']], function () {
 	Route::get('/concert/{concertId}/edit', 'ConcertController@edit')->where(['concertId' => '[\w]+']);
 
 
-	Route::get('/user/{facebookUid}', 'UserController@show')->where(['facebookUid' => '[0-9]+']);
+	//Route::get('/user/{facebookUid}', 'UserController@show')->where(['facebookUid' => '[0-9]+']);
+	Route::get('/api/subscribe/{concertId}', 'ApiController@subscribe')->where(['concertId' => '[\w]+']);
 
 
 	Route::get('/privacy', function(){ return view('pages/privacy'); });

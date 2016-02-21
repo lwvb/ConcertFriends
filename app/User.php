@@ -81,6 +81,13 @@ class User implements Authenticatable {
         ];
     }
 
+    public function getData() {
+        return [
+            'name' => $this->name,
+            'fb_uid' => $this->facebookUid,
+        ];
+    }
+
 
     /**
      * Get the name of the unique identifier for the user.

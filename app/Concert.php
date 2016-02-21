@@ -17,10 +17,12 @@ class Concert
     protected $url;
     protected $owner;
     protected $users;
+    protected $version;
 
     public function __construct($data) {
         if(array_key_exists('_source',$data)) {
             $this->id = $data['_id'];
+            $this->version = $this->safeGet('version', $data);
             $data = $data['_source'];
         } else if(array_key_exists('id',$data)) {
             $this->id = $data['id'];
@@ -36,6 +38,7 @@ class Concert
         $this->url = $this->safeGet('url',$data);
         $this->owner = $this->safeGet('owner',$data);
         $this->users = $this->safeGet('users',$data);
+
     }
 
     /**
@@ -83,7 +86,8 @@ class Concert
             'location' => $this->location,
             'description' => $this->description,
             'url' => $this->url,
-            'owner' => $this->owner];
+            'owner' => $this->owner,
+            'users' => $this->users];
     }
 
     public function getMarkerData() {
@@ -108,5 +112,27 @@ class Concert
         if(method_exists($this, $funcname)){
             return $this->$funcname();
         }
+    }
+
+    public function getVersion() {
+        return $this->version;
+    }
+
+    public function addUser($data) {
+        if(!$this->hasUser($data['fb_uid'])) {
+            $this->users[] = $data;
+        }
+    }
+
+    public function hasUser($facebookUid) {
+        if(!is_array($this->users)){
+            return false;
+        }
+        foreach ($this->users as $user) {
+            if($user['fb_uid'] == $facebookUid) {
+                return true;
+            }
+        }
+        return false;
     }
 }

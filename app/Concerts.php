@@ -31,6 +31,7 @@ class Concerts
         ];
         if($concert->hasId()) {
             $params['id'] = $concert->getId();
+            $params['version'] = $concert->getVersion();
             $params['body']['doc'] = $concert->getDocument();
             return $this->elasticClient->update($params);
         } else {

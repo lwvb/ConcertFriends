@@ -27,4 +27,16 @@ class ApiController extends Controller
     	$markerData = array_map(function($concert) { return $concert->getMarkerData();} , $result['concerts']);
         return response()->json($markerData);
 	}
+
+    public function subscribe($concertId){
+        $concert = $this->concerts->get($concertId);
+        $user = \Auth::user();
+        if($user && !$concert->hasUser($user->getFacebookUid())) {
+            $concert->addUser($user->getData());
+            $this->concerts->save($concert);
+            return response()->json(true);
+        } else {
+            return response()->json(false);
+        }
+    }
 }

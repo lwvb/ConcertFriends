@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function show($facebookUid) {
     	$users = new Users();
-    	dd($users->findByFacebookUid($facebookUid));
+    	//dd($users->findByFacebookUid($facebookUid));
     	return;
     }
 }
