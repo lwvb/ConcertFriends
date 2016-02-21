@@ -1,13 +1,15 @@
 .Header {
-    width: 100%;
     background: $color-blue;
-    color: $color-white;
-    padding-bottom: 1em;
-    padding-top: 2em;
-    // height: 6em;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    .Container {
+        width: 100%;
+        color: $color-white;
+        padding-bottom: 1em;
+        padding-top: 2em;
+        // height: 6em;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
 }
 
 .Header-title {

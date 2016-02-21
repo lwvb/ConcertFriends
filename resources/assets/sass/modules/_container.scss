@@ -7,6 +7,6 @@
     }
     @include MQ(XM){
         padding: 2em 6em;
-        // width: 960px;
+        max-width: 960px;
     }
 }

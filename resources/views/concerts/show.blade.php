@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('content')
-    <div>
-        {{ $concert->getName() }}
+    <div class="Container">
+        <h1>{{ $concert['_source']['name'] }}</h1>
     </div>
 @stop
 

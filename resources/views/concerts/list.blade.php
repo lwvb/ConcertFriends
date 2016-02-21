@@ -63,7 +63,12 @@
             </ul>
         </div>
     </div>
+    @section ('footer')
+        @include ('footer')
+    @show
 @stop
+
+
 
 @section('scripts')
 
