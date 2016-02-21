@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Carbon\Carbon;
+
 class Concert
 {
     protected $id;
@@ -66,6 +68,11 @@ class Concert
     public function getOwner()       { return $this->owner; }
     public function getUsers()       { return $this->users; }
 
+    public function getDateString() {
+        $date = new Carbon($this->startDate);
+        return $date->formatLocalized('%d %B %Y, %H:%M');
+    }
+
     public function getDocument() {
         return [
             'name' => $this->name,
@@ -77,6 +84,15 @@ class Concert
             'description' => $this->description,
             'url' => $this->url,
             'owner' => $this->owner];
+    }
+
+    public function getMarkerData() {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'location' => [$this->location['lat'],$this->location['lon']],
+            'date' => $this->getDateString()
+        ];
     }
 
     public function setLocation($latitude, $longitude) {

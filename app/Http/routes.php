@@ -48,24 +48,12 @@ Route::group(['middleware' => ['web']], function () {
 
 	Route::get('/user/{facebookUid}', 'UserController@show')->where(['facebookUid' => '[0-9]+']);
 
+
+	Route::get('/privacy', function(){ return view('pages/privacy'); });
+	Route::get('/help', function(){ return view('pages/help'); });
+	Route::get('/about', function(){ return view('pages/about'); });
+	Route::get('/terms', function(){ return view('pages/terms'); });
+	Route::get('/contact', function(){ return view('pages/contact'); });
 });
 
-Route::get('/privacy', function(){
-    return view('pages/privacy');
-});
-
-Route::get('/help', function(){
-    return view('pages/help');
-});
-
-Route::get('/about', function(){
-    return view('pages/about');
-});
-
-Route::get('/terms', function(){
-    return view('pages/terms');
-});
-
-Route::get('/contact', function(){
-    return view('pages/contact');
-});
+Route::get('/api/markers', 'ApiController@markers');

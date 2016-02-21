@@ -28,8 +28,14 @@ class ConcertController extends Controller
         return view('concerts.list',['concerts' => $result['concerts'], 'search' => $search]);
     }
 
-    public function map() {
-        return view('concerts.map');
+    public function map(Request $request) {
+    	$search = preg_replace('/[^\w\x80-\xFF\- :]/', '', $request->input('q'));
+    	if(strlen($search)) {
+    		$result = $this->concerts->search($search);
+    	} else {
+    		$result = $this->concerts->all();
+    	}
+    	return view('concerts.map',['concerts' => $result['concerts'], 'search' => $search]);
     }
 
     public function show($concertId) {
