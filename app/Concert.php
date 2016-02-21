@@ -74,6 +74,10 @@ class Concert
         return (strlen($this->owner));
     }
 
+    public function isEditableByCurrentUser() {
+        return ($this->hasOwner() && \Auth::user() && \Auth::user()->getFacebookUid() == $this->getOwner());
+    }
+
     public function getId()          { return $this->id; }
     public function getName()        { return $this->name; }
     public function getStartDate()   { return $this->startDate; }

@@ -4,7 +4,7 @@
     <div class="Site-content">
         <div class="Container">
             <h1 class="Event-name">{{ $concert->getName() }}</h1><br>
-            @if ($concert->hasOwner() && $concert->getOwner() === Auth::user()->getFacebookUid())
+            @if ($concert->isEditableByCurrentUser())
                 <a href="/concert/{{ $concert->getId() }}/edit">
                     <button class="Button">Edit</button>
                 </a>
