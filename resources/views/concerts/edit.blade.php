@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('headermeta')
+<link href="/css/picker.css" rel="stylesheet" type="text/css">
+@stop
+
 @section('content')
     <div class="Site-content">
     	<div class="Container">
@@ -20,9 +24,13 @@
     				{!! Form::text('name') !!}
     			</div>
     	       	<div class="Form-group">
-    				{!! Form::label('Date:') !!}
-    				{!! Form::text('startDate') !!}
-    			</div>
+    			    {!! Form::label('Date:') !!}
+                    {!! Form::text('date', null, ['class' => 'datepicker']) !!}
+                </div>
+                <div class="Form-group">
+                    {!! Form::label('Starttime:') !!}
+                    {!! Form::text('time', null, ['class' => 'timepicker']) !!}
+                </div>
             	<div class="Form-group">
     				{!! Form::label('Address:') !!}
     				{!! Form::text('address') !!}
@@ -51,4 +59,20 @@
 @stop
 
 @section('scripts')
+<script>
+$(function() {
+    $('.datepicker').pickadate({
+        min: new Date(),
+        format: 'yyyy-mm-dd',
+        formatSubmit: 'yyyy-mm-dd'
+    });
+    $('.timepicker').pickatime({
+        format: 'HH:i',
+        formatLabel: 'HH:i',
+        formatSubmit: 'HH:i',
+        interval: 15
+    });
+});
+</script>
+<script src="/js/all.js"></script>
 @stop

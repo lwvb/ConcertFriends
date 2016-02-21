@@ -29,7 +29,7 @@ class Concert
         }
 
         $this->name = $data['name'];
-        $this->startDate = (array_key_exists('start_date', $data)) ? $data['start_date'] : $data['startDate'];
+        $this->startDate = $this->createStartDate($data);
         $this->address = $data['address'];
         $this->city = $data['city'];
         $this->country = $data['country'];
@@ -38,7 +38,18 @@ class Concert
         $this->url = $this->safeGet('url',$data);
         $this->owner = $this->safeGet('owner',$data);
         $this->users = $this->safeGet('users',$data);
+    }
 
+    private function createStartDate($data) {
+        if(array_key_exists('start_date', $data)) {
+            return new Carbon($data['start_date']);
+        } else if(array_key_exists('date', $data) && array_key_exists('time', $data)) {
+            return new Carbon($data['date'].' '.$data['time']);
+        } else if(array_key_exists('startDate', $data)) {
+            return new Carbon($data['startDate']);
+        } else {
+            return NULL;
+        }
     }
 
     /**
@@ -72,22 +83,30 @@ class Concert
     public function getUsers()       { return $this->users; }
 
     public function getDateString() {
-        $date = new Carbon($this->startDate);
-        return $date->formatLocalized('%d %B %Y, %H:%M');
+        return $this->startDate->formatLocalized('%d %B %Y, %H:%M');
+    }
+
+    public function getDate() {
+        return $this->startDate->toDateString();
+    }
+
+    public function getTime() {
+        return $this->startDate->toTimeString();
     }
 
     public function getDocument() {
-        return [
+        $data = [
             'name' => $this->name,
-            'start_date' => $this->startDate,
+            'start_date' => $this->startDate->toIso8601String(),
             'address' => $this->address,
             'city' => $this->city,
             'country' => $this->country,
             'location' => $this->location,
-            'description' => $this->description,
-            'url' => $this->url,
-            'owner' => $this->owner,
-            'users' => $this->users];
+            'description' => $this->description];
+        if($this->url) { $data['url'] = $this->url; }
+        if($this->owner) { $data['owner'] = $this->owner; }
+        if(is_array($this->users)) { $data['users'] = $this->users; }
+        return $data;
     }
 
     public function getMarkerData() {

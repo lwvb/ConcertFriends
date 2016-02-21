@@ -18,14 +18,18 @@
             <div class="Event-audience">
                 <h3>Who's going</h3>
                 <div id="event-users">
-                @if (is_array($concert->getUsers()))
-                    @foreach ($concert->getUsers() as $user)
-                        <a href="https://facebook.com/{{ $user['fb_uid'] }}">
-                            <div class="Event-person">
-                                <img src="https://graph.facebook.com/v2.5/{{ $user['fb_uid'] }}/picture?type=normal" alt="{{ $user['name'] }}" title="{{ $user['name'] }}">
-                            </div>
-                        </a>
-                    @endforeach
+                @if (Auth::check())
+                    @if (is_array($concert->getUsers()))
+                        @foreach ($concert->getUsers() as $user)
+                            <a href="https://facebook.com/{{ $user['fb_uid'] }}">
+                                <div class="Event-person">
+                                    <img src="https://graph.facebook.com/v2.5/{{ $user['fb_uid'] }}/picture?type=normal" alt="{{ $user['name'] }}" title="{{ $user['name'] }}">
+                                </div>
+                            </a>
+                        @endforeach
+                    @endif
+                @else
+                    <p>See who's going when you login</p>
                 @endif
                 </div>
             </div>

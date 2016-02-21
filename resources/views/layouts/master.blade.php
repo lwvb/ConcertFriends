@@ -4,9 +4,9 @@
         <meta charset="utf-8">
         <title>ConcertFriends</title>
         <link href="/css/app.css" rel="stylesheet" type="text/css">
-        <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+        @section('headermeta')
+        @show
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
     </head>
     <body>
         <div class="Site">
@@ -45,6 +45,9 @@
         </div>
 
         @include('icons')
+
+        <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 
         @section('scripts')
         @show

@@ -46,5 +46,5 @@
 @stop
 
 @section('scripts')
-    <script src="js/all.js"></script>
+    <script src="/js/all.js"></script>
 @stop

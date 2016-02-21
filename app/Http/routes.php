@@ -29,7 +29,6 @@ Route::group(['middleware' => ['web']], function () {
 	    'uses' => 'Auth\AuthController@getSocialAuth',
 	    'as'   => 'auth.getSocialAuth'
 	]);
-	Route::get('/login', function(){ return redirect('/login/facebook');});
 	Route::get('/login/callback/{provider?}',[
 	    'uses' => 'Auth\AuthController@getSocialAuthCallback',
 	    'as'   => 'auth.getSocialAuthCallback'
