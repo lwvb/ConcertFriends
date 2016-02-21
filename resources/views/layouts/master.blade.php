@@ -22,25 +22,32 @@
                                 </a>
                             </li>
                             <li class="Nav-item">
-                                <a href="#">
-                                    <svg class="Icon Icon--login"><use xlink:href="#Icon--login"></use></svg>
-                                    <span class="Item"> Login</span>
-                                </a>
+                                @if (Auth::check())
+                                    <a href="/logout">
+                                        <svg class="Icon Icon--login"><use xlink:href="#Icon--login"></use></svg>
+                                        <span class="Item"> Logout</span>
+                                    </a>
+                                @else
+                                    <a href="/login/facebook">
+                                        <svg class="Icon Icon--login"><use xlink:href="#Icon--login"></use></svg>
+                                        <span class="Item"> Login</span>
+                                    </a>
+                                @endif
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-                
+
             @section('content')
             @show
-            
+
         </div>
-        
+
         @include('icons')
-        
+
         @section('scripts')
         @show
-        
+
     </body>
 </html>

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Users;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -26,6 +27,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies($gate);
 
-        //
+        $this->app['auth']->provider('custom',function()
+        {
+            return new Users();
+        });
     }
+
 }

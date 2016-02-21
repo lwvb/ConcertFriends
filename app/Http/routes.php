@@ -24,6 +24,19 @@
 */
 
 Route::group(['middleware' => ['web']], function () {
+	//Social Login
+	Route::get('/login/{provider?}',[
+	    'uses' => 'Auth\AuthController@getSocialAuth',
+	    'as'   => 'auth.getSocialAuth'
+	]);
+	Route::get('/login/callback/{provider?}',[
+	    'uses' => 'Auth\AuthController@getSocialAuthCallback',
+	    'as'   => 'auth.getSocialAuthCallback'
+	]);
+	Route::get('/logout',[
+	    'uses' => 'Auth\AuthController@logout',
+	    'as'   => 'auth.logout'
+	]);
 
 	Route::get('/', 'ConcertController@map');
 	Route::get('/list', 'ConcertController@listall');
@@ -31,6 +44,9 @@ Route::group(['middleware' => ['web']], function () {
 	Route::post('concert/store', ['before' => 'csrf', 'uses' => 'ConcertController@store']);
 	Route::get('/concert/{concertId}', 'ConcertController@show')->where(['concertId' => '[\w]+']);
 	Route::get('/concert/{concertId}/edit', 'ConcertController@edit')->where(['concertId' => '[\w]+']);
+
+
+	Route::get('/user/{facebookUid}', 'UserController@show')->where(['facebookUid' => '[0-9]+']);
 
 });
 

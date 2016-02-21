@@ -58,6 +58,13 @@ class SetupDummydata extends Command
             'body' => ['name' => 'Automatic', 'system_user' => true]
         ])['_id'];
         $this->info('Created a new system user with id '.$systemUserId);
+
+        $this->elasticClient->index([
+            'index' => ElasticNames::INDEX_NAME,
+            'type' => ElasticNames::TYPE_USER,
+            'body' => ['name' => 'Test gebruiker', 'system_user' => true, 'fb_uid' => '12345']
+        ]);
+
         $concerts = new Concerts();
         $concerts->save(new Concert([
             'name' => 'Bruce Springsteen & The E Street Band',

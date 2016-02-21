@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Users;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Laravel\Socialite\Contracts\Factory as Socialite;
 
 class AuthController extends Controller
 {
@@ -30,43 +32,43 @@ class AuthController extends Controller
      */
     protected $redirectTo = '/';
 
+    protected $socialite;
+
     /**
      * Create a new authentication controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Socialite $socialite)
     {
+        $this->socialite = $socialite;
         $this->middleware('guest', ['except' => 'logout']);
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    public function getSocialAuth($provider=null)
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-        ]);
+        if(!config("services.$provider")) abort('404');
+
+        return $this->socialite->with($provider)->redirect();
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
+
+    public function getSocialAuthCallback($provider=null)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        if(!config("services.$provider")) abort('404');
+        if($userData = $this->socialite->with($provider)->user()){
+            $users = new Users();
+            $user = new User($userData);
+            $user = $users->save($user);
+            \Auth::login($user, false);
+            return redirect('/');
+        } else {
+            return abort('404');
+        }
+    }
+
+    public function logout() {
+        \Auth::logout();
+        return redirect('/');
     }
 }
