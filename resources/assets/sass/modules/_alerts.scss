@@ -1,0 +1,10 @@
+.alert-danger {
+    border: 1px solid $color-red;
+    border-radius: 4px;
+    background: $color-red-light;
+    color: $color-red;
+    h3 {
+        margin-left: 1.2em;
+        margin-bottom: 0;
+    }
+}

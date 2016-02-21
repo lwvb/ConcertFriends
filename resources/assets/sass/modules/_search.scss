@@ -1,8 +1,8 @@
 
 .Event-content {
     position: absolute;
-    bottom: -1em;
-    @include MQ(M) {
+    bottom: 0em;
+    @include MQ(S) {
         bottom: 3em;
     }
     width: 100%;
@@ -14,37 +14,41 @@
 }
 
 .Event-search {
-
-    margin-bottom: 1em;
+    margin-bottom: .5em;
     width: 100%;
-    @include MQ(XS) {
-        margin-right: 1em;        
-    }
-    @include MQ(S) {    
-        flex: 1;
-        width: inherit;        
+    @include MQ(M) {    
+        flex: 1 auto;
+        width: 65%;        
     }
 }
 
 .Event-selectDate {
-    // flex: 1 auto;
-    margin-bottom: 1em;
-    margin-right: 1em;        
+    flex: 1 auto;
+    margin-bottom: .5em;
+    @include MQ(M) { 
+        margin-left: .5em;
+    }
+    .Button {
+        width: 100%;
+    }
 }
 
 .Event-selectCity {
-    // flex: 1 auto;
-    margin-bottom: 1em;
-    margin-right: 1em;        
+    flex: 1 auto;
+    margin-bottom: .5em;
+    margin-left: .5em; 
+    .Button {
+        width: 100%;
+    }
 }
 
 .Event-selectSwitch {
-    margin-bottom: 1em;
-    // margin-right: 1em;      
-}
-
-.Event-add {
-    // flex: 1 auto;
+    flex: 1 auto;
+    margin-bottom: .5em;
+    margin-left: .5em;
+    .Button {
+        width: 100%;
+    }
 }
 
 .Search-form {
