@@ -3,6 +3,15 @@
 @section('content')
     <div class="Site-content">
     	<div class="Container">
+        	@if (count($errors) > 0)
+    		    <div class="alert alert-danger">
+    		        <ul>
+    		            @foreach ($errors->all() as $error)
+    		                <li>{{ $error }}</li>
+    		            @endforeach
+    		        </ul>
+    		    </div>
+    		@endif
         	<h2> Add your event </h2>
         	{!! Form::model($concert, ['url' => '/concert/store', 'class'=> 'Event-form']) !!}
         		<div class="Form-group">
