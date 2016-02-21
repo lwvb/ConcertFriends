@@ -53,9 +53,9 @@ class SetupElastic extends Command
                     'properties' => [
                         'system_user' => ['type' => 'boolean'],
                         'name' => ['type' => 'string'],
-                        'fb_uid' => ['type' => 'string',
+                        'fb_uid' => ['type' => 'string'],
                         'last_online' => ['type' => 'date', 'format' => 'date_time_no_millis'],
-                        'email' => ['type' => 'string', 'index' => 'not_analyzed']]
+                        'email' => ['type' => 'string', 'index' => 'not_analyzed']
                     ]
                 ]
             ]
