@@ -47,7 +47,12 @@ class Concerts
             'body' => [
                 'from' => $offset,
                 'size' => $limit,
-                'query' => ['match_all' => []]
+                'query' => [
+                    'filtered' => [
+                        'query' =>['match_all' => []],
+                        'filter' => $this->filters()
+                    ]
+                ]
             ]
         ]);
         $concerts = [];
@@ -65,49 +70,54 @@ class Concerts
                 'from' => $offset,
                 'size' => $limit,
                 'query' => [
-                    'bool' => [
-                        'minimum_should_match' => 1,
-                        'should' => [
-                            ['match' => [
-                                'name' => [
-                                    'query' => $search,
-                                    'boost' => 1.8
-                                ],
-                            ]],
-                            ['match' => [
-                                'city' => [
-                                    'query' => $search,
-                                    'boost' => 1.6
-                                ],
-                            ]],
-                            ['match' => [
-                                'description' => [
-                                    'query' => $search,
-                                    'boost' => 1.2
+                    'filtered' => [
+                        'query' => [
+                            'bool' => [
+                                'minimum_should_match' => 1,
+                                'should' => [
+                                    ['match' => [
+                                        'name' => [
+                                            'query' => $search,
+                                            'boost' => 1.8
+                                        ],
+                                    ]],
+                                    ['match' => [
+                                        'city' => [
+                                            'query' => $search,
+                                            'boost' => 1.6
+                                        ],
+                                    ]],
+                                    ['match' => [
+                                        'description' => [
+                                            'query' => $search,
+                                            'boost' => 1.2
+                                        ]
+                                    ]],
+                                    ['fuzzy' => [
+                                        'name' => [
+                                            'value' => $search,
+                                            'fuzziness' => 'AUTO',
+                                            'boost' => 1.1
+                                        ],
+                                    ]],
+                                    ['fuzzy' => [
+                                        'city' => [
+                                            'value' => $search,
+                                            'fuzziness' => 'AUTO',
+                                        ]
+                                    ]],
+                                    ['fuzzy' => [
+                                        'description' => [
+                                            'value' => $search,
+                                            'fuzziness' => 'AUTO',
+                                        ],
+                                    ]],
                                 ]
-                            ]],
-                            ['fuzzy' => [
-                                'name' => [
-                                    'value' => $search,
-                                    'fuzziness' => 'AUTO',
-                                    'boost' => 1.1
-                                ],
-                            ]],
-                            ['fuzzy' => [
-                                'city' => [
-                                    'value' => $search,
-                                    'fuzziness' => 'AUTO',
-                                ]
-                            ]],
-                            ['fuzzy' => [
-                                'description' => [
-                                    'value' => $search,
-                                    'fuzziness' => 'AUTO',
-                                ],
-                            ]],
-                        ]
+                            ]
+                        ],
+                        'filter' => $this->filters()
                     ]
-                ],
+                ]
 
             ]
         ]);
@@ -125,6 +135,12 @@ class Concerts
             'id' => $id
         ]);
         return new Concert($result);
+    }
+
+    private function filters() {
+        return [
+            'range' => ['start_date' => ['gte' => 'now/d']]
+        ];
     }
 
 }

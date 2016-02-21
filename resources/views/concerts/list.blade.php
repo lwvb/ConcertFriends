@@ -51,7 +51,7 @@
                             <h3 class="Event-name">{{ $concert->getName() }}</h3><br>
                             <date class="Event-date">
                                 <svg class="Icon Icon--calender"><use xlink:href="#Icon--calender"></use></svg>
-                                19 januari 2016
+                                {{ $concert->getDateString() }}
                             </date>
                             <p class="Event-city">
                                 <svg class="Icon Icon--marker"><use xlink:href="#Icon--marker"></use></svg>
